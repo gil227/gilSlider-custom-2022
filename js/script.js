@@ -1,26 +1,53 @@
+window.addEventListener('resize',function(){
+    var gilSlides = document.querySelector('.gil-slides'),
+    gilItem = document.querySelectorAll('.gil-item'),
+    gilWrapWidth = gilSlides.parentNode.offsetWidth,
+    itemMargin = getComputedStyle(gilItem[0]).getPropertyValue('margin-right'),
+    prevBtn = document.querySelector('.prev'),
+    nextBtn = document.querySelector('.next'),
+    itemCount = gilItem.length,
+    currentIdx = 0,
+    viewLength = 2,
+    itemWidth = gilWrapWidth/viewLength - (parseInt(itemMargin)*(viewLength-1)/viewLength),
+    itemAllWidth = itemWidth + parseInt(itemMargin),
+    itemActive = true;
+    console.log('itemWidth ->'+itemWidth);
+    console.log('itemAllWidth ->'+itemAllWidth);
+});
+
 //기본셋팅변수
 var gilSlides = document.querySelector('.gil-slides'),
     gilItem = document.querySelectorAll('.gil-item'),
-    currentIdx = 0,
-    itemCount = gilItem.length,
-    itemWidth = gilItem[0].offsetWidth,
+    gilWrapWidth = gilSlides.parentNode.offsetWidth,
     itemMargin = getComputedStyle(gilItem[0]).getPropertyValue('margin-right'),
-    itemAllWidth = itemWidth + parseInt(itemMargin),
     prevBtn = document.querySelector('.prev'),
     nextBtn = document.querySelector('.next'),
+    itemCount = gilItem.length,
+    currentIdx = 0,
+    viewLength = 2,
+    itemWidth = gilWrapWidth/viewLength - (parseInt(itemMargin)*(viewLength-1)/viewLength),
+    itemAllWidth = itemWidth + parseInt(itemMargin),
     itemActive = true;
-
-//클론변수
-var firstSlide = gilItem[0],
-    lastSlide = gilItem[gilItem.length -1],
-    cloneFirst = firstSlide.cloneNode(true),
-    cloneLast = lastSlide.cloneNode(true);
+    console.log('itemWidth ->'+itemWidth);
+    console.log('itemAllWidth ->'+itemAllWidth);
 
 //드래그변수
 var dragPosX1,
     dragPosX2,
     dragInitialPos,
     dragFinalPos;
+
+//아이템 넓이값 지정
+console.log(itemCount+2);
+for(var i=0; i<itemCount; i++){
+    gilItem[i].style.width = itemWidth +'px';
+}
+
+//클론변수
+var firstSlide = gilItem[0],
+    lastSlide = gilItem[gilItem.length -1],
+    cloneFirst = firstSlide.cloneNode(true),
+    cloneLast = lastSlide.cloneNode(true);
 
 //아이템 클론
 function makeClone(){
