@@ -1,18 +1,6 @@
 window.addEventListener('resize',function(){
-    var gilSlides = document.querySelector('.gil-slides'),
-    gilItem = document.querySelectorAll('.gil-item'),
-    gilWrapWidth = gilSlides.parentNode.offsetWidth,
-    itemMargin = getComputedStyle(gilItem[0]).getPropertyValue('margin-right'),
-    prevBtn = document.querySelector('.prev'),
-    nextBtn = document.querySelector('.next'),
-    itemCount = gilItem.length,
-    currentIdx = 0,
-    viewLength = 2,
-    itemWidth = gilWrapWidth/viewLength - (parseInt(itemMargin)*(viewLength-1)/viewLength),
-    itemAllWidth = itemWidth + parseInt(itemMargin),
-    itemActive = true;
-    console.log('itemWidth ->'+itemWidth);
-    console.log('itemAllWidth ->'+itemAllWidth);
+    resizeWidth = gilSlides.parentNode.offsetWidth;
+    console.log(resizeWidth);
 });
 
 //기본셋팅변수
@@ -30,6 +18,7 @@ var gilSlides = document.querySelector('.gil-slides'),
     itemActive = true;
     console.log('itemWidth ->'+itemWidth);
     console.log('itemAllWidth ->'+itemAllWidth);
+    console.log('itemAllWidth ->'+gilWrapWidth);
 
 //드래그변수
 var dragPosX1,
@@ -77,7 +66,6 @@ function setPos(){
 
 nextBtn.addEventListener('click',function(){atSlide('next')});
 prevBtn.addEventListener('click',function(){atSlide('prev')});
-
 
 //드래그
 gilSlides.addEventListener('mousedown',dragStart);
