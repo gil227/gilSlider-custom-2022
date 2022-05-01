@@ -1,21 +1,47 @@
-const gilSlider = function(){
+var gilSlider = function(){
+    console.log('gilSlider!!');
+
+    //공통 사용변수
+    var gilSlides = document.querySelector('.gil-slides'),
+        gilItem = document.querySelectorAll('.gil-item'),
+        itemLength = gilItem.length;
+        itemViewCount = 3, //슬라이더 뷰 갯수
+        itemMargin = 20; //슬라이더 마진값
+
+
+    function activeEvent(){
+        //초기 슬라이더 넓이값
+        for(var i = 0; i < itemLength; i++){
+            gilItem[i].style.width = gilSlides.offsetWidth/itemViewCount-itemMargin + 'px';
+        }
+        window.addEventListener('resize',onResizeHandler);
+        
+        setIndex();
+        getIndex();
+        setUlX();
+        onPrevClickHandler();
+        onNextClickHandler();
+        onDragStartHandler();
+        onDragMoveHandler();
+        onDragEndHandler();
+    }
+    //무한루프
+    function gilLoop(){
+        
+    }
 
     //index 셋팅
-    function setIndex(no) {
+    function setIndex(num) {
 
     }
     //index 잡아내는 함수
-    function getIndex(no) {
+    function getIndex(num) {
 
     }
     //x,y 좌표 슬라이드 움직임
     function setUlX(x, isAnimation) {
 
     }
-
-};
-
-gilSlider.control = function () {
 
     //prev btn
     function onPrevClickHandler() {
@@ -41,11 +67,18 @@ gilSlider.control = function () {
     }
     
     //리사이징
-    function onResizeHandler(e){
+    function onResizeHandler(){
         //item  의 넓이값
+        for(var i = 0; i < itemLength; i++){
+            gilItem[i].style.width = gilSlides.offsetWidth/itemViewCount-itemMargin + 'px';
+        }
     }
 
-}
+    //내부함수호출
+    activeEvent();
+};
+
+gilSlider();
 
 
 // window.addEventListener('resize',function(){
