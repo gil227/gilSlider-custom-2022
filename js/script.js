@@ -2,11 +2,11 @@ var gilSlider = function(){
     console.log('gilSlider!!');
 
     //공통 사용변수
-    var gilSlides = document.querySelector('.gil-slides'),
-        gilItem = document.querySelectorAll('.gil-item'),
-        itemLength = gilItem.length;
-        itemViewCount = 3, //슬라이더 뷰 갯수
-        itemMargin = 20; //슬라이더 마진값
+    var gilSlides = document.querySelector('.gil-slides');
+    var gilItem = document.querySelectorAll('.gil-item');
+    var itemLength = gilItem.length;
+    var itemViewCount = 3; //슬라이더 뷰 갯수
+    var itemMargin = 20; //슬라이더 마진값
 
 
     function activeEvent(){
@@ -15,7 +15,7 @@ var gilSlider = function(){
             gilItem[i].style.width = gilSlides.offsetWidth/itemViewCount-itemMargin + 'px';
         }
         window.addEventListener('resize',onResizeHandler);
-        
+
         setIndex();
         getIndex();
         setUlX();
@@ -27,29 +27,35 @@ var gilSlider = function(){
     }
     //무한루프
     function gilLoop(){
-        
+    
     }
 
     //index 셋팅
-    function setIndex(num) {
-
+    function setIndex() {
+        for(var i =0; i < itemLength; i++){
+            gilItem[i].setAttribute('gilslider-index',i);
+        }
     }
     //index 잡아내는 함수
-    function getIndex(num) {
-
-    }
-    //x,y 좌표 슬라이드 움직임
-    function setUlX(x, isAnimation) {
+    function getIndex() {
 
     }
 
     //prev btn
-    function onPrevClickHandler() {
-
+    function onPrevClickHandler(e) {
+        var prevBtnTarget = docment.querySelector('prev');
+        prevBtnTarget.addEventListener('click',function(e){
+            
+        });
     }
     //next btn
     function onNextClickHandler() {
+        var nextBtnTarget = docment.querySelector('next');
+    }
 
+    //x,y 좌표 슬라이드 움직임
+    function setUlX(x, isAnimation) {
+        
     }
 
     //드래그 Start
